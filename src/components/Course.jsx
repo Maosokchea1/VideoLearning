@@ -14,7 +14,6 @@ const Course = ({ language }) => {
             titleEN: "Video Learning Basics",
             descKH: "ស្វែងយល់ពីរបៀបប្រើប្រាស់វេទិកា និងចាប់ផ្តើមមេរៀនវីដេអូដំបូងរបស់អ្នក។",
             descEN: "Learn how to navigate the platform and start your first video lesson.",
-            icon: "🎥",
             badgeKH: "ថ្មី",
             badgeEN: "New",
             lessonsCount: language === 'EN' ? "12 Video Lessons" : "១២ វីដេអូមេរៀន"
@@ -25,7 +24,6 @@ const Course = ({ language }) => {
             titleEN: "Advanced Skill Courses",
             descKH: "សិក្សាអំពីបច្ចេកទេស និងជំនាញជាក់ស្តែងតាមរយៈវីដេអូគុណភាពខ្ពស់។",
             descEN: "Study practical techniques and skills through high-definition videos.",
-            icon: "🎬",
             badgeKH: "សំខាន់",
             badgeEN: "Essential",
             lessonsCount: language === 'EN' ? "24 Video Courses" : "២៤ វគ្គវីដេអូ"
@@ -36,7 +34,6 @@ const Course = ({ language }) => {
             titleEN: "Practice & Discussion",
             descKH: "ពង្រឹងសមត្ថភាពរបស់អ្នកតាមរយៈកិច្ចការអនុវត្ត និងវីដេអូបណ្តុះបណ្តាល។",
             descEN: "Boost your abilities through hands-on exercises and tutorial videos.",
-            icon: "💬",
             badgeKH: "ពេញនិយម",
             badgeEN: "Popular",
             lessonsCount: language === 'EN' ? "50+ Video Guides" : "៥០+ ការណែនាំតាមវីដេអូ"
@@ -71,8 +68,11 @@ const Course = ({ language }) => {
                         >
                             <div>
                                 <div className="flex justify-between items-center mb-6">
-                                    <div className="w-16 h-16 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center text-3xl font-black group-hover:scale-110 transition-transform">
-                                        {item.icon}
+                                    {/* Professional Video Play Icon (SVG) */}
+                                    <div className="w-14 h-14 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
+                                        <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
                                     </div>
                                     <span className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">
                                         {language === 'EN' ? item.badgeEN : item.badgeKH}
@@ -92,7 +92,7 @@ const Course = ({ language }) => {
                                 <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                                     {item.lessonsCount}
                                 </span>
-                                <button className="text-red-600 dark:text-red-400 font-bold text-sm flex items-center space-x-1 hover:underline">
+                                <button className="text-red-600 dark:text-red-400 font-bold text-sm flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
                                     <span>{language === 'EN' ? "Watch Lesson" : "មើលមេរៀន"}</span>
                                     <span>&rarr;</span>
                                 </button>

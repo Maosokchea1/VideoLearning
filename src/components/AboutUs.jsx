@@ -1,6 +1,7 @@
 import React from 'react';
 import { khmer } from '../Translate/khmer';
 import { english } from '../Translate/English';
+import image from '../assets/image/Myself1.png';
 
 const AboutUs = ({ language }) => {
     const t = language === 'EN' ? english : khmer;
@@ -11,27 +12,16 @@ const AboutUs = ({ language }) => {
                 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     
-                    {/* Left: Illustration or Image Box */}
-                    <div className="relative">
-                        <div className="relative w-full h-[400px] bg-gradient-to-tr from-primary-600 via-rose-600 to-orange-500 rounded-3xl shadow-2xl flex items-center justify-center p-8 overflow-hidden group">
+                    {/* Left: Image Box without Background */}
+                    <div className="relative flex justify-center items-center">
+                        <div className="relative w-full h-[400px] sm:h-[450px] flex items-center justify-center p-4 group">
                             
-                            {/* Background Decorative Glow */}
-                            <div className="absolute -left-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-2xl group-hover:scale-125 transition-transform duration-500"></div>
-
-                            {/* Center Content Box inside Graphic */}
-                            <div className="text-center text-white space-y-4 z-10">
-                                <div className="w-20 h-20 bg-white/20 backdrop-blur-xl rounded-2xl mx-auto flex items-center justify-center text-4xl shadow-lg border border-white/20">
-                                    🎥
-                                </div>
-                                <h3 className="text-2xl font-extrabold tracking-tight">
-                                    {language === 'EN' ? "Interactive Video Learning" : "ការសិក្សាវីដេអូអន្តរកម្ម"}
-                                </h3>
-                                <p className="text-sm text-primary-100 max-w-xs mx-auto">
-                                    {language === 'EN' 
-                                        ? "Empowering learners worldwide to master new skills through high-definition video lessons." 
-                                        : "ផ្តល់អំណាចដល់អ្នកសិក្សាជុំវិញពិភពលោកឱ្យស្វែងយល់ជំនាញថ្មីៗតាមរយៈវីដេអូមេរៀនគុណភាពខ្ពស់។"}
-                                </p>
-                            </div>
+                            {/* Actual Local Image */}
+                            <img 
+                                src={image} 
+                                alt="About Us" 
+                                className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500" 
+                            />
                         </div>
                     </div>
 
@@ -44,7 +34,7 @@ const AboutUs = ({ language }) => {
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                             {language === 'EN' 
                                 ? "Dedicated to Making Video Learning Easy and Accessible" 
-                                : "ប្តេជ្ញាចិត្តធ្វើឱ្យការសិក្សាតាមវីដេអូមានភាពងាយស្រួល និងអាចចូលរៀនបានគ្រប់ពេល"}
+                                : "ខ្ញុំបាទនឹងប្តេជ្ញាចិត្តធ្វើឱ្យការសិក្សាតាមវីដេអូមានភាពងាយស្រួល និងអាចចូលរៀនបានគ្រប់ពេល"}
                         </h2>
 
                         <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
