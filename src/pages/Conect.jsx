@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import { khmer } from '../Translate/khmer';
-import { english } from '../Translate/English';
 
 const Conect = ({ language }) => {
-    const t = language === 'EN' ? english : khmer;
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = (e) => {

@@ -1,12 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { khmer } from '../Translate/khmer';
 import { english } from '../Translate/English';
 
 const Course = ({ language }) => {
-    // ផ្អែកលើភាសាដែលបានបញ្ជូនមក (លំនាំដើម KH ប្រសិនបើគ្មាន)
     const t = language === 'EN' ? english : khmer;
 
-    // ទិន្នន័យមេរៀនវីដេអូគំរូ
     const lessonList = [
         {
             id: 1,
@@ -16,7 +15,7 @@ const Course = ({ language }) => {
             descEN: "Learn how to navigate the platform and start your first video lesson.",
             badgeKH: "ថ្មី",
             badgeEN: "New",
-            lessonsCount: language === 'EN' ? "12 Video Lessons" : "១២ វីដេអូមេរៀន"
+            lessonsCount: language === 'EN' ? "12 Video Lessons" : "១២ វីដេអូមេរៀន",
         },
         {
             id: 2,
@@ -26,7 +25,7 @@ const Course = ({ language }) => {
             descEN: "Study practical techniques and skills through high-definition videos.",
             badgeKH: "សំខាន់",
             badgeEN: "Essential",
-            lessonsCount: language === 'EN' ? "24 Video Courses" : "២៤ វគ្គវីដេអូ"
+            lessonsCount: language === 'EN' ? "24 Video Courses" : "២៤ វគ្គវីដេអូ",
         },
         {
             id: 3,
@@ -36,7 +35,7 @@ const Course = ({ language }) => {
             descEN: "Boost your abilities through hands-on exercises and tutorial videos.",
             badgeKH: "ពេញនិយម",
             badgeEN: "Popular",
-            lessonsCount: language === 'EN' ? "50+ Video Guides" : "៥០+ ការណែនាំតាមវីដេអូ"
+            lessonsCount: language === 'EN' ? "50+ Video Guides" : "៥០+ ការណែនាំតាមវីដេអូ",
         }
     ];
 
@@ -44,7 +43,6 @@ const Course = ({ language }) => {
         <section id="lessons" className="py-20 bg-gray-50 dark:bg-gray-800/50 transition-colors duration-300">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                {/* Section Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
                     <span className="bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 text-sm font-bold px-4 py-1.5 rounded-full">
                         {t.lessons || (language === 'EN' ? "Video Lessons" : "វីដេអូមេរៀន")}
@@ -59,7 +57,6 @@ const Course = ({ language }) => {
                     </p>
                 </div>
 
-                {/* Lessons Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {lessonList.map((item) => (
                         <div 
@@ -68,12 +65,16 @@ const Course = ({ language }) => {
                         >
                             <div>
                                 <div className="flex justify-between items-center mb-6">
-                                    {/* Professional Video Play Icon (SVG) */}
-                                    <div className="w-14 h-14 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner">
+                                    {/* Link to Watch Page */}
+                                    <Link 
+                                        to={`/watch/${item.id}`}
+                                        className="w-14 h-14 bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-inner cursor-pointer"
+                                        title="Play Video"
+                                    >
                                         <svg className="w-7 h-7 fill-current ml-0.5" viewBox="0 0 24 24">
                                             <path d="M8 5v14l11-7z" />
                                         </svg>
-                                    </div>
+                                    </Link>
                                     <span className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">
                                         {language === 'EN' ? item.badgeEN : item.badgeKH}
                                     </span>
@@ -92,10 +93,13 @@ const Course = ({ language }) => {
                                 <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                                     {item.lessonsCount}
                                 </span>
-                                <button className="text-red-600 dark:text-red-400 font-bold text-sm flex items-center space-x-1 group-hover:translate-x-1 transition-transform">
+                                <Link 
+                                    to={`/watch/${item.id}`}
+                                    className="text-red-600 dark:text-red-400 font-bold text-sm flex items-center space-x-1 group-hover:translate-x-1 transition-transform"
+                                >
                                     <span>{language === 'EN' ? "Watch Lesson" : "មើលមេរៀន"}</span>
                                     <span>&rarr;</span>
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

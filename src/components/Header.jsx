@@ -7,9 +7,23 @@ import logoImg from '../assets/image/Logo.png';
 const Header = ({ language, setLanguage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(false); 
-    const [activeNav, setActiveNav] = useState('#home'); // State សម្រាប់កំណត់ Tab ដែលកំពុងជ្រើសរើស
+    const [activeNav, setActiveNav] = useState('#home');
 
     const t = language === 'KH' ? khmer : english;
+
+    // Function សម្រាប់លេងសំឡេងពេលចុចប៊ូតុង
+    const playClickSound = () => {
+        try {
+            // អ្នកអាចប្តូរ Link ខាងក្រោមទៅតាម URL សំឡេងដែលអ្នកចង់បាន ឬដាក់ αρχείο ក្នុង public folder
+            const audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3');
+            audio.volume = 0.5; // កម្រិតសំឡេង (0.1 ដល់ 1.0)
+            audio.play().catch((error) => {
+                console.log("Audio play blocked or failed:", error);
+            });
+        } catch (err) {
+            console.log(err);
+        }
+    };
 
     useEffect(() => {
         if (darkMode) {
@@ -19,8 +33,8 @@ const Header = ({ language, setLanguage }) => {
         }
     }, [darkMode]);
 
-    // Function សម្រាប់ប្តូរភាសាទៅវិញទៅមក (Toggle)
     const toggleLanguage = () => {
+        playClickSound(); // បន្ថែមសំឡេងពេលប្តូរភាសា
         setLanguage(language === 'KH' ? 'EN' : 'KH');
     };
 
@@ -30,7 +44,11 @@ const Header = ({ language, setLanguage }) => {
                 <div className="flex justify-between items-center h-20">
                     
                     {/* Logo Section */}
-                    <Link to="/" className="flex items-center space-x-2.5 cursor-pointer flex-shrink-0 group">
+                    <Link 
+                        to="/" 
+                        onClick={playClickSound}
+                        className="flex items-center space-x-2.5 cursor-pointer flex-shrink-0 group"
+                    >
                         <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center overflow-hidden transition-transform duration-300 transform group-hover:scale-105">
                             <img 
                                 src={logoImg} 
@@ -54,9 +72,10 @@ const Header = ({ language, setLanguage }) => {
                         <Link 
                             to="/#home" 
                             onClick={() => {
+                                playClickSound();
                                 setActiveNav('#home');
                                 window.scrollTo({ top: 0, behavior: 'smooth' });
-                            }}
+                            }} 
                             className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-base font-semibold transition-all ${
                                 activeNav === '#home' 
                                     ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' 
@@ -71,7 +90,10 @@ const Header = ({ language, setLanguage }) => {
                         
                         <a 
                             href="#lessons" 
-                            onClick={() => setActiveNav('#lessons')}
+                            onClick={() => {
+                                playClickSound();
+                                setActiveNav('#lessons');
+                            }}
                             className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-base font-semibold transition-all ${
                                 activeNav === '#lessons' 
                                     ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' 
@@ -86,7 +108,10 @@ const Header = ({ language, setLanguage }) => {
 
                         <a 
                             href="#about" 
-                            onClick={() => setActiveNav('#about')}
+                            onClick={() => {
+                                playClickSound();
+                                setActiveNav('#about');
+                            }}
                             className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-base font-semibold transition-all ${
                                 activeNav === '#about' 
                                     ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' 
@@ -101,7 +126,10 @@ const Header = ({ language, setLanguage }) => {
 
                         <a 
                             href="#contact" 
-                            onClick={() => setActiveNav('#contact')}
+                            onClick={() => {
+                                playClickSound();
+                                setActiveNav('#contact');
+                            }}
                             className={`flex items-center space-x-2 px-3.5 py-2 rounded-xl text-base font-semibold transition-all ${
                                 activeNav === '#contact' 
                                     ? 'bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400' 
@@ -120,7 +148,10 @@ const Header = ({ language, setLanguage }) => {
                         
                         {/* Dark / Light Mode Button */}
                         <button
-                            onClick={() => setDarkMode(!darkMode)}
+                            onClick={() => {
+                                playClickSound();
+                                setDarkMode(!darkMode);
+                            }}
                             className="p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200/60 dark:border-gray-700 transition-all"
                             title="Toggle Mode"
                         >
@@ -157,23 +188,27 @@ const Header = ({ language, setLanguage }) => {
                         {/* Mobile Menu Toggle Button */}
                         <div className="flex xl:hidden items-center">
                             <button
-                                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                                onClick={() => {
+                                    playClickSound();
+                                    setIsMenuOpen(!isMenuOpen);
+                                }}
                                 className="text-gray-700 dark:text-gray-300 hover:text-primary-600 focus:outline-none p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200/60 dark:border-gray-700"
                             >
                                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     {isMenuOpen ? (
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
                                     ) : (
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M4 6h16M4 12h16M4 18h16" />
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                                     )}
                                 </svg>
                             </button>
                         </div>
 
-                        {/* Login & Register Buttons (Balanced & Clean) */}
+                        {/* Login & Register Buttons */}
                         <div className="hidden sm:flex items-center space-x-3 flex-shrink-0">
                             <Link
                                 to="/login"
+                                onClick={playClickSound}
                                 className="flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-primary-600 dark:text-primary-400 bg-primary-50/80 dark:bg-gray-800 hover:bg-primary-100 dark:hover:bg-gray-700 transition-all border border-primary-200/80 dark:border-gray-700 shadow-xs"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -184,6 +219,7 @@ const Header = ({ language, setLanguage }) => {
 
                             <Link
                                 to="/register"
+                                onClick={playClickSound}
                                 className="flex items-center space-x-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-primary-600 hover:bg-primary-700 text-white shadow-md shadow-primary-500/20 transition-all"
                             >
                                 <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -201,15 +237,14 @@ const Header = ({ language, setLanguage }) => {
             {isMenuOpen && (
                 <div className="xl:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-xl border-t border-gray-100 dark:border-gray-800 px-5 pt-4 pb-8 space-y-2.5 shadow-2xl animate-in slide-in-from-top duration-300 max-h-[80vh] overflow-y-auto">
                     
-                    {/* Mobile Login & Register Buttons */}
                     <div className="grid grid-cols-2 gap-2.5 pb-3 border-b border-gray-100 dark:border-gray-800">
-                        <Link to="/login" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400 font-bold border border-primary-200 dark:border-gray-700 transition-all">
+                        <Link to="/login" onClick={() => { playClickSound(); setIsMenuOpen(false); }} className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm bg-primary-50 dark:bg-gray-800 text-primary-600 dark:text-primary-400 font-bold border border-primary-200 dark:border-gray-700 transition-all">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
                             </svg>
                             <span>{language === 'KH' ? 'ចូល' : 'Login'}</span>
                         </Link>
-                        <Link to="/register" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm bg-primary-600 text-white font-bold shadow-md shadow-primary-500/20 transition-all">
+                        <Link to="/register" onClick={() => { playClickSound(); setIsMenuOpen(false); }} className="flex items-center justify-center space-x-2 px-4 py-3 rounded-xl text-sm bg-primary-600 text-white font-bold shadow-md shadow-primary-500/20 transition-all">
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                             </svg>
@@ -220,6 +255,7 @@ const Header = ({ language, setLanguage }) => {
                     <Link 
                         to="/#home" 
                         onClick={() => { 
+                            playClickSound();
                             setIsMenuOpen(false); 
                             setActiveNav('#home'); 
                             window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -232,21 +268,21 @@ const Header = ({ language, setLanguage }) => {
                         <span>{language === 'KH' ? 'ទំព័រដើម' : t.home}</span>
                     </Link>
 
-                    <a href="#lessons" onClick={() => { setIsMenuOpen(false); setActiveNav('#lessons'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
+                    <a href="#lessons" onClick={() => { playClickSound(); setIsMenuOpen(false); setActiveNav('#lessons'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-200 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
                         <svg className="w-5 h-5 text-primary-500" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                         </svg>
                         <span>{language === 'KH' ? 'វគ្គសិក្សា' : t.lessons}</span>
                     </a>
 
-                    <a href="#about" onClick={() => { setIsMenuOpen(false); setActiveNav('#about'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
+                    <a href="#about" onClick={() => { playClickSound(); setIsMenuOpen(false); setActiveNav('#about'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
                         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                         <span>{language === 'KH' ? 'អំពីយើង' : t.about}</span>
                     </a>
                     
-                    <a href="#contact" onClick={() => { setIsMenuOpen(false); setActiveNav('#contact'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
+                    <a href="#contact" onClick={() => { playClickSound(); setIsMenuOpen(false); setActiveNav('#contact'); }} className="flex items-center space-x-3 px-4 py-3 rounded-xl text-base text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-gray-800 hover:text-primary-600 font-bold transition-all">
                         <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                         </svg>
