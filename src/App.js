@@ -16,6 +16,7 @@ import WatchLesson from './pages/WatchLesson';
 // Auth Components 
 import Login from './Auth/Login';    
 import Register from './Auth/Register'; 
+import ForgotPassword from './Auth/ForgotPassword'; // ✅ បន្ថែម Import នេះ
 
 function App() {
   const [language, setLanguage] = useState('KH'); 
@@ -42,9 +43,10 @@ function App() {
           {/* ទំព័រមើលវីដេអូមេរៀន (Watch Lesson Page) */}
           <Route path="/watch/:id" element={<WatchLesson language={language} />} />
 
-          {/* ទំព័រ Login & Register */}
+          {/* ទំព័រ Auth (Login, Register, Forgot Password) */}
           <Route path="/login" element={<Login language={language} />} />
           <Route path="/register" element={<Register language={language} />} />
+          <Route path="/forgot-password" element={<ForgotPassword language={language} />} /> {/* ✅ បន្ថែម Route នេះ */}
         </Routes>
 
         {/* Footer */}

@@ -6,14 +6,14 @@ const Footer = ({ language = 'KH', darkMode = false }) => {
     const t = language === 'EN' ? english : khmer;
 
     return (
-        <footer className={`pt-16 pb-12 border-t transition-colors duration-300 relative overflow-hidden dark:bg-slate-950 dark:border-slate-800 dark:text-slate-100 ${
+        <footer className={`pt-16 pb-12 border-t transition-colors duration-300 relative overflow-hidden ${
             darkMode 
                 ? 'bg-slate-950 border-slate-800 text-slate-100' 
-                : 'bg-white border-slate-200 text-slate-800'
+                : 'bg-white border-slate-100 text-slate-800'
         }`}>
             
-            {/* Background Glow Effect */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-24 bg-primary/5 blur-3xl pointer-events-none rounded-full"></div>
+            {/* Background Glow Effect (Red Theme) */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-24 bg-red-600/5 blur-3xl pointer-events-none rounded-full"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
@@ -23,91 +23,146 @@ const Footer = ({ language = 'KH', darkMode = false }) => {
                     
                     {/* Brand / Logo Info */}
                     <div className="space-y-4 md:col-span-1">
-                        <div className="flex items-center space-x-3">
-                            <div className="bg-primary text-white w-10 h-10 rounded-2xl flex items-center justify-center shadow-md shadow-primary/25">
-                                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                        <a href="#home" className="flex items-center space-x-3 group">
+                            <div className={`w-11 h-11 rounded-full flex items-center justify-center border transition-transform group-hover:scale-105 ${
+                                darkMode 
+                                    ? 'bg-slate-900 border-slate-800' 
+                                    : 'bg-blue-50/60 border-blue-100 shadow-sm'
+                            }`}>
+                                {/* Graduation Cap / Video Icon matching Header */}
+                                <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 3L1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
                                 </svg>
                             </div>
-                            <span className={`text-xl font-extrabold tracking-tight ${
-                                darkMode ? 'text-white' : 'text-slate-900'
-                            }`}>
-                                Video<span className="text-primary">Learning</span>
-                            </span>
-                        </div>
-                        <p className={`text-sm leading-relaxed ${
+                            <div className="flex flex-col">
+                                <span className={`text-xl font-serif font-extrabold tracking-tight leading-none ${
+                                    darkMode ? 'text-white' : 'text-slate-900'
+                                }`}>
+                                    Video<span className="text-red-600">Learning</span>
+                                </span>
+                                <span className={`text-[11px] mt-1 font-medium ${
+                                    darkMode ? 'text-slate-400' : 'text-slate-500'
+                                }`}>
+                                    {language === 'EN' ? "Khmer Learning Platform" : "ថ្នាលសិក្សាភាសាខ្មែរ"}
+                                </span>
+                            </div>
+                        </a>
+                        <p className={`text-sm leading-relaxed pt-1 ${
                             darkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}>
                             {language === 'EN' 
-                                ? "Your ultimate interactive video learning platform to master new skills easily and effectively."
-                                : "វេទិកាអន្តរកម្មវីដេអូសិក្សាដ៏ល្អបំផុតរបស់អ្នក ក្នុងការស្វែងយល់ជំនាញថ្មីៗដោយងាយស្រួល និងមានប្រសិទ្ធភាព។"}
+                                ? "Explore high-quality video courses taught by expert instructors. Learn at your own pace, anytime, anywhere."
+                                : "ស្វែងរកវគ្គសិក្សាវីដេអូគុណភាពខ្ពស់ បង្រៀនដោយគ្រូជំនាញៗ។ សិក្សាដោយខ្លួនឯង គ្រប់ពេលវេលា និងគ្រប់ទីកន្លែង។"}
                         </p>
                     </div>
 
-                    {/* Quick Links */}
+                    {/* Quick Links (Matched with Navbar) */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                        <h4 className="text-sm font-bold uppercase tracking-wider text-red-600">
                             {language === 'EN' ? "Quick Links" : "តំណភ្ជាប់រហ័ស"}
                         </h4>
-                        <ul className={`space-y-2.5 text-sm ${
+                        <ul className={`space-y-2.5 text-sm font-medium ${
                             darkMode ? 'text-slate-400' : 'text-slate-600'
                         }`}>
-                            <li><a href="#home" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>›</span> <span>{t.home || (language === 'EN' ? "Home" : "ទំព័រដើម")}</span></a></li>
-                            <li><a href="#lessons" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>›</span> <span>{t.lessons || (language === 'EN' ? "Lessons" : "វីដេអូមេរៀន")}</span></a></li>
-                            <li><a href="#vocabulary" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>›</span> <span>{t.vocabulary || (language === 'EN' ? "Vocabulary" : "វាក្យសព្ទ")}</span></a></li>
-                            <li><a href="#practice" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>›</span> <span>{t.practice || (language === 'EN' ? "Practice" : "ការអនុវត្ត")}</span></a></li>
-                            <li><a href="#about" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>›</span> <span>{t.about || (language === 'EN' ? "About Us" : "អំពីយើង")}</span></a></li>
+                            <li>
+                                <a href="#home" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">›</span>
+                                    <span>{t.home || (language === 'EN' ? "Home" : "ទំព័រដើម")}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#courses" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">›</span>
+                                    <span>{t.courses || t.lessons || (language === 'EN' ? "Courses" : "វគ្គសិក្សា")}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#about" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">›</span>
+                                    <span>{t.about || (language === 'EN' ? "About Us" : "អំពីយើង")}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">›</span>
+                                    <span>{t.contact || (language === 'EN' ? "Contact Us" : "ទាក់ទងយើង")}</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
-                    {/* Resources */}
+                    {/* Resources / Popular Courses */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                        <h4 className="text-sm font-bold uppercase tracking-wider text-red-600">
                             {language === 'EN' ? "Resources" : "ធនធានសិក្សា"}
                         </h4>
                         <ul className={`space-y-2.5 text-sm ${
                             darkMode ? 'text-slate-400' : 'text-slate-600'
                         }`}>
-                            <li><a href="#lessons" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>•</span> <span>{language === 'EN' ? "HD Video Lessons" : "វីដេអូមេរៀន HD"}</span></a></li>
-                            <li><a href="#lessons" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>•</span> <span>{language === 'EN' ? "Expert Instructors" : "គ្រូជំនាញៗ"}</span></a></li>
-                            <li><a href="#vocabulary" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>•</span> <span>{language === 'EN' ? "Tutorial Guides" : "ការណែនាំបែបវីដេអូ"}</span></a></li>
-                            <li><a href="#practice" className="hover:text-primary transition-colors flex items-center space-x-1.5"><span>•</span> <span>{language === 'EN' ? "Interactive Quizzes" : "លំហាត់តេស្តអន្តរកម្ម"}</span></a></li>
+                            <li>
+                                <a href="#courses" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">•</span>
+                                    <span>{language === 'EN' ? "C & C++ Core" : "មូលដ្ឋានគ្រឹះ C & C++"}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#courses" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">•</span>
+                                    <span>{language === 'EN' ? "HD Video Lessons" : "វីដេអូមេរៀនគុណភាពខ្ពស់"}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#courses" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">•</span>
+                                    <span>{language === 'EN' ? "Expert Instructors" : "បង្រៀនដោយគ្រូជំនាញៗ"}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#courses" className="hover:text-red-600 transition-colors flex items-center space-x-2">
+                                    <span className="text-red-500">•</span>
+                                    <span>{language === 'EN' ? "Self-Paced Learning" : "សិក្សាដោយខ្លួនឯងគ្រប់ពេល"}</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
 
                     {/* Contact or Social */}
                     <div className="space-y-4">
-                        <h4 className="text-sm font-bold uppercase tracking-wider text-primary">
+                        <h4 className="text-sm font-bold uppercase tracking-wider text-red-600">
                             {language === 'EN' ? "Connect With Us" : "ទាក់ទងមកយើងខ្ញុំ"}
                         </h4>
-                        <p className={`text-sm ${
+                        <p className={`text-sm leading-relaxed ${
                             darkMode ? 'text-slate-400' : 'text-slate-500'
                         }`}>
-                            {language === 'EN' ? "Have questions? Feel free to reach out to our team." : "មានសំណួរ? សូមកុំស្ទាក់ស្ទើរក្នុងការទាក់ទងមកកាន់ក្រុមការងារយើងខ្ញុំ។"}
+                            {language === 'EN' 
+                                ? "Have questions? Feel free to reach out to our team." 
+                                : "មានសំណួរ? សូមកុំស្ទាក់ស្ទើរក្នុងការទាក់ទងមកកាន់ក្រុមការងារយើងខ្ញុំ។"}
                         </p>
                         <div className="flex space-x-3 pt-2">
                             {/* Facebook Icon */}
                             <a 
                                 href="https://facebook.com/share/1Djf3WjZWd?mibextid=wwXIfr" 
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-primary hover:text-white ${
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-red-600 hover:text-white ${
                                     darkMode 
                                         ? 'bg-slate-800 text-slate-300' 
-                                        : 'bg-slate-100 text-slate-600 hover:shadow-sm'
+                                        : 'bg-red-50 text-red-600 hover:shadow-md hover:shadow-red-600/20'
                                 }`} 
                                 title="Facebook"
                             >
                                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                             </a>
                             
-                            {/* Telegram Icon (ភ្ជាប់ទៅកាន់ @sokcheamoa) */}
+                            {/* Telegram Icon */}
                             <a 
                                 href="https://t.me/sokcheamoa" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-primary hover:text-white ${
+                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-red-600 hover:text-white ${
                                     darkMode 
                                         ? 'bg-slate-800 text-slate-300' 
-                                        : 'bg-slate-100 text-slate-600 hover:shadow-sm'
+                                        : 'bg-red-50 text-red-600 hover:shadow-md hover:shadow-red-600/20'
                                 }`} 
                                 title="Telegram - ម៉ៅ សុខជា"
                             >
@@ -117,10 +172,10 @@ const Footer = ({ language = 'KH', darkMode = false }) => {
                             {/* YouTube Icon */}
                             <a 
                                 href="#youtube" 
-                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-primary hover:text-white ${
+                                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all hover:scale-105 hover:bg-red-600 hover:text-white ${
                                     darkMode 
                                         ? 'bg-slate-800 text-slate-300' 
-                                        : 'bg-slate-100 text-slate-600 hover:shadow-sm'
+                                        : 'bg-red-50 text-red-600 hover:shadow-md hover:shadow-red-600/20'
                                 }`} 
                                 title="YouTube"
                             >
@@ -136,11 +191,11 @@ const Footer = ({ language = 'KH', darkMode = false }) => {
                     darkMode ? 'text-slate-500' : 'text-slate-400'
                 }`}>
                     <p>
-                        &copy; {new Date().getFullYear()} VideoLearning. {language === 'EN' ? "All rights reserved." : "រក្សាសិទ្ធិគ្រប់យ៉ាង។"}
+                        &copy; {new Date().getFullYear()} VideoLearning ({language === 'EN' ? "Khmer Learning Platform" : "ថ្នាលសិក្សាភាសាខ្មែរ"}). {language === 'EN' ? "All rights reserved." : "រក្សាសិទ្ធិគ្រប់យ៉ាង។"}
                     </p>
                     <div className="flex space-x-6">
-                        <a href="#privacy" className="hover:text-primary transition-colors">{language === 'EN' ? "Privacy Policy" : "គោលការណ៍ឯកជនភាព"}</a>
-                        <a href="#terms" className="hover:text-primary transition-colors">{language === 'EN' ? "Terms of Service" : "លក្ខខណ្ឌសេវាកម្ម"}</a>
+                        <a href="#privacy" className="hover:text-red-600 transition-colors">{language === 'EN' ? "Privacy Policy" : "គោលការណ៍ឯកជនភាព"}</a>
+                        <a href="#terms" className="hover:text-red-600 transition-colors">{language === 'EN' ? "Terms of Service" : "លក្ខខណ្ឌសេវាកម្ម"}</a>
                     </div>
                 </div>
 
