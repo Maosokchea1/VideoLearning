@@ -26,4 +26,5 @@ export const khmer = {
     registerBtn: "ចុះឈ្មោះ",
     hasAccount: "មានគណនីរួចហើយមែនទេ?",
     loginHere: "ចូលទីនេះ"
+    
 };
