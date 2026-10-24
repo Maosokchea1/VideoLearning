@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { khmer } from '../../Translate/khmer';
+import { english } from '../../Translate/English';
 
-const Conect = ({ language }) => {
+const Contact = ({ language }) => {
     const [submitted, setSubmitted] = useState(false);
 
     const handleSubmit = (e) => {
@@ -13,7 +15,7 @@ const Conect = ({ language }) => {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div className="text-center space-y-4 mb-12">
-                    <span className="inline-block bg-red-100 dark:bg-red-900/50 text-red-600 dark:text-red-400 text-sm font-bold px-4 py-1.5 rounded-full">
+                    <span className="inline-block bg-primary-100 dark:bg-primary-900/50 text-primary-600 dark:text-primary-400 text-sm font-bold px-4 py-1.5 rounded-full">
                         {language === 'EN' ? "Contact Us" : "ទំនាក់ទំនងមកយើងខ្ញុំ"}
                     </span>
                     <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white">
@@ -29,7 +31,7 @@ const Conect = ({ language }) => {
                 <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 p-8 sm:p-12">
                     {submitted ? (
                         <div className="text-center py-12 space-y-4">
-                            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl">
+                            <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto text-3xl shadow-inner">
                                 ✓
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -42,7 +44,7 @@ const Conect = ({ language }) => {
                             </p>
                             <button 
                                 onClick={() => setSubmitted(false)}
-                                className="mt-4 px-6 py-2 bg-red-600 text-white font-medium rounded-xl hover:bg-red-700 transition-colors"
+                                className="mt-4 px-6 py-2.5 bg-primary-600 text-white font-bold rounded-xl hover:bg-primary-700 transition-colors shadow-md shadow-primary-500/20"
                             >
                                 {language === 'EN' ? "Send Another Message" : "ផ្ញើសារថ្មីម្តងទៀត"}
                             </button>
@@ -50,45 +52,45 @@ const Conect = ({ language }) => {
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                <div className="space-y-2 text-left">
+                                    <label className="text-sm font-bold text-gray-700 dark:text-gray-300">
                                         {language === 'EN' ? "Your Name" : "ឈ្មោះរបស់អ្នក"}
                                     </label>
                                     <input 
                                         type="text" 
                                         required 
                                         placeholder={language === 'EN' ? "Enter your name" : "បញ្ចូលឈ្មោះរបស់អ្នក"}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
                                     />
                                 </div>
-                                <div className="space-y-2">
-                                    <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                                <div className="space-y-2 text-left">
+                                    <label className="text-sm font-bold text-gray-700 dark:text-gray-300">
                                         {language === 'EN' ? "Email Address" : "សារអេឡិចត្រូនិច (Email)"}
                                     </label>
                                     <input 
                                         type="email" 
                                         required 
                                         placeholder={language === 'EN' ? "Enter your email" : "បញ្ចូលអ៊ីមែលរបស់អ្នក"}
-                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                                        className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all"
                                     />
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">
+                            <div className="space-y-2 text-left">
+                                <label className="text-sm font-bold text-gray-700 dark:text-gray-300">
                                     {language === 'EN' ? "Message" : "មាតិកាសារ"}
                                 </label>
                                 <textarea 
                                     rows="5" 
                                     required 
                                     placeholder={language === 'EN' ? "Type your message here..." : "សរសេរសាររបស់អ្នកនៅទីនេះ..."}
-                                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-red-500"
+                                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-primary-500 transition-all resize-none"
                                 ></textarea>
                             </div>
 
                             <button 
                                 type="submit" 
-                                className="w-full py-4 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-600/30 transition-all duration-300"
+                                className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl shadow-lg shadow-primary-500/30 transition-all duration-300"
                             >
                                 {language === 'EN' ? "Send Message" : "ផ្ញើសារឥឡូវនេះ"}
                             </button>
@@ -101,4 +103,4 @@ const Conect = ({ language }) => {
     );
 };
 
-export default Conect;
+export default Contact;

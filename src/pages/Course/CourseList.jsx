@@ -1,0 +1,35 @@
+export const lessonList = [
+    {
+        id: 1,
+        titleKH: "មូលដ្ឋានគ្រឹះវីដេអូសិក្សា",
+        titleEN: "Video Learning Basics",
+        descKH: "ស្វែងយល់ពីរបៀបប្រើប្រាស់វេទិកា និងចាប់ផ្តើមមេរៀនវីដេអូដំបូងរបស់អ្នក។",
+        descEN: "Learn how to navigate the platform and start your first video lesson.",
+        badgeKH: "ថ្មី",
+        badgeEN: "New",
+        lessonsCountKH: "១២ វីដេអូមេរៀន",
+        lessonsCountEN: "12 Video Lessons",
+    },
+    {
+        id: 2,
+        titleKH: "វគ្គសិក្សាជំនាញកម្រិតខ្ពស់",
+        titleEN: "Advanced Skill Courses",
+        descKH: "សិក្សាអំពីបច្ចេកទេស និងជំនាញជាក់ស្តែងតាមរយៈវីដេអូគុណភាពខ្ពស់។",
+        descEN: "Study practical techniques and skills through high-definition videos.",
+        badgeKH: "សំខាន់",
+        badgeEN: "Essential",
+        lessonsCountKH: "២៤ វគ្គវីដេអូ",
+        lessonsCountEN: "24 Video Courses",
+    },
+    {
+        id: 3,
+        titleKH: "ការពិភាក្សា និងការអនុវត្ត",
+        titleEN: "Practice & Discussion",
+        descKH: "ពង្រឹងសមត្ថភាពរបស់អ្នកតាមរយៈកិច្ចការអនុវត្ត និងវីដេអូបណ្តុះបណ្តាល។",
+        descEN: "Boost your abilities through hands-on exercises and tutorial videos.",
+        badgeKH: "ពេញនិយម",
+        badgeEN: "Popular",
+        lessonsCountKH: "៥០+ ការណែនាំតាមវីដេអូ",
+        lessonsCountEN: "50+ Video Guides",
+    }
+];

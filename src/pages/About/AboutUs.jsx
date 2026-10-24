@@ -1,7 +1,7 @@
 import React from 'react';
-import { khmer } from '../Translate/khmer';
-import { english } from '../Translate/English';
-import image from '../assets/image/Myself1.png';
+import { khmer } from '../../Translate/khmer';
+import { english } from '../../Translate/English';
+import Myself from '../../assets/image/Myself1.png'; // ✅ ឈ្មោះនេះត្រូវគ្នាហើយ
 
 const AboutUs = ({ language }) => {
     const t = language === 'EN' ? english : khmer;
@@ -18,7 +18,7 @@ const AboutUs = ({ language }) => {
                             
                             {/* Actual Local Image */}
                             <img 
-                                src={image} 
+                                src={Myself} // ✅ កែពី {image} មកជា {Myself}
                                 alt="About Us" 
                                 className="w-full h-full object-contain drop-shadow-2xl group-hover:scale-105 transition-transform duration-500" 
                             />
@@ -34,13 +34,13 @@ const AboutUs = ({ language }) => {
                         <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 dark:text-white leading-tight">
                             {language === 'EN' 
                                 ? "Dedicated to Making Video Learning Easy and Accessible" 
-                                : "ខ្ញុំបាទនឹងប្តេជ្ញាចិត្តធ្វើឱ្យការសិក្សាតាមវីដេអូមានភាពងាយស្រួល និងអាចចូលរៀនបានគ្រប់ពេល"}
+                                : "ប្តេជ្ញាធ្វើឱ្យការសិក្សាតាមវីដេអូមានភាពងាយស្រួល និងអាចចូលមើលបានគ្រប់កន្លែង"}
                         </h2>
 
                         <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed">
                             {language === 'EN'
                                 ? "VideoLearn is an interactive platform built for students of all levels. Whether you are a complete beginner starting with basics or looking to master advanced skills, our structured video courses are designed for you."
-                                : "VideoLearn គឺជាវេទិកាអន្តរកម្មដែលបង្កើតឡើងសម្រាប់អ្នកសិក្សាគ្រប់កម្រិត។ មិនថាអ្នកទើបតែចាប់ផ្តើមពីកម្រិតមូលដ្ឋាន ឬចង់ស្វែងយល់ពីជំនាញកម្រិតខ្ពស់នោះទេ វគ្គសិក្សាវីដេអូរបស់យើងត្រូវបានរៀបចំឡើងយ៉ាងពិសេសសម្រាប់អ្នក។"}
+                                : "VideoLearn គឺជាវេទិកាអន្តរកម្មដែលបង្កើតឡើងសម្រាប់សិស្សានុសិស្សគ្រប់កម្រិត។ មិនថាអ្នកជាអ្នកចាប់ផ្តើមថ្មី ឬចង់ស្វែងយល់ពីជំនាញកម្រិតខ្ពស់នោះទេ វគ្គសិក្សាវីដេអូរបស់យើងត្រូវបានរៀបចំឡើងសម្រាប់អ្នក។"}
                         </p>
 
                         {/* Feature Stats or Bullet points */}
@@ -48,13 +48,13 @@ const AboutUs = ({ language }) => {
                             <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 text-center lg:text-left">
                                 <p className="text-2xl font-black text-primary-600 dark:text-primary-400">100+</p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                                    {language === 'EN' ? "HD Video Lessons" : "វីដេអូមេរៀន HD"}
+                                    {language === 'EN' ? "HD Video Lessons" : "មេរៀនវីដេអូ HD"}
                                 </p>
                             </div>
                             <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-2xl border border-gray-100 dark:border-gray-800 text-center lg:text-left">
                                 <p className="text-2xl font-black text-primary-600 dark:text-primary-400">24/7</p>
                                 <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                                    {language === 'EN' ? "Access Anywhere" : "ចូលរៀនគ្រប់ពេលវេលា"}
+                                    {language === 'EN' ? "Access Anywhere" : "ចូលមើលបានគ្រប់ពេលវេលា"}
                                 </p>
                             </div>
                         </div>
